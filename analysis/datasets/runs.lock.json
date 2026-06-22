@@ -1,0 +1,2621 @@
+{
+  "baselines": [
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Humanoid-v4",
+      "id": "08ifiejm",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Ant-v4",
+      "id": "0ste9wuj",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "LunarLander-v3",
+      "id": "0vq1xra9",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Humanoid-v4",
+      "id": "0zc3c5qz",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Walker2d-v4",
+      "id": "109ky1hm",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Humanoid-v4",
+      "id": "114qxuxj",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "LunarLander-v3",
+      "id": "116o24dl",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Walker2d-v4",
+      "id": "1flomgkg",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Humanoid-v4",
+      "id": "1g3g5wrt",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Humanoid-v4",
+      "id": "1ij89ikh",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "HalfCheetah-v4",
+      "id": "1vv45ni0",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Humanoid-v4",
+      "id": "269fpiay",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Ant-v4",
+      "id": "27xsaktt",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Ant-v4",
+      "id": "2a1v95zc",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Hopper-v4",
+      "id": "2j4gqpva",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "LunarLander-v3",
+      "id": "33vbnqra",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Hopper-v4",
+      "id": "3777sj85",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Hopper-v4",
+      "id": "3y7dordf",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Hopper-v4",
+      "id": "4f56whzf",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "CartPole-v1",
+      "id": "4ime4fb5",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Ant-v4",
+      "id": "4jek2jih",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "LunarLander-v3",
+      "id": "4pwm58x5",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Walker2d-v4",
+      "id": "4r7sf4j0",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Walker2d-v4",
+      "id": "4v4q0reb",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Hopper-v4",
+      "id": "5je31k6q",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "HalfCheetah-v4",
+      "id": "5swsfeix",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "HalfCheetah-v4",
+      "id": "607um6mq",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "HalfCheetah-v4",
+      "id": "6amgg6dx",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Hopper-v4",
+      "id": "6br0alu4",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "CartPole-v1",
+      "id": "6cmgzxga",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Hopper-v4",
+      "id": "6dlxr7yj",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "LunarLander-v3",
+      "id": "6jsafny9",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "LunarLander-v3",
+      "id": "6oqtx9sx",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "CartPole-v1",
+      "id": "75q17avj",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "LunarLander-v3",
+      "id": "76l9vrbk",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "CartPole-v1",
+      "id": "7c08hjiw",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Walker2d-v4",
+      "id": "7f4u2zzl",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Ant-v4",
+      "id": "7xm314ae",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Humanoid-v4",
+      "id": "8frsppvl",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Walker2d-v4",
+      "id": "8k26yh91",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Hopper-v4",
+      "id": "8qruc1l6",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Hopper-v4",
+      "id": "8v5ns5ry",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "HalfCheetah-v4",
+      "id": "8v5sc5ns",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Walker2d-v4",
+      "id": "9n5mqr3l",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Humanoid-v4",
+      "id": "9ud6jegl",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "CartPole-v1",
+      "id": "a5nskjk1",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Humanoid-v4",
+      "id": "aboyey3n",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Hopper-v4",
+      "id": "agxibom8",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Hopper-v4",
+      "id": "bejdl11i",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Ant-v4",
+      "id": "blmc3x3t",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "LunarLander-v3",
+      "id": "casz25ld",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "HalfCheetah-v4",
+      "id": "clgx9nnw",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Walker2d-v4",
+      "id": "cqtynu10",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Humanoid-v4",
+      "id": "d0yvxcf2",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Ant-v4",
+      "id": "d3dkb0j2",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "LunarLander-v3",
+      "id": "dhnr0a3o",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Walker2d-v4",
+      "id": "do5ojjxp",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "HalfCheetah-v4",
+      "id": "ehtjhoig",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "CartPole-v1",
+      "id": "emeybedo",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Humanoid-v4",
+      "id": "f03x56lz",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Humanoid-v4",
+      "id": "f47xubaq",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Walker2d-v4",
+      "id": "f8bo3ysi",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Ant-v4",
+      "id": "g8hxx5l6",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "HalfCheetah-v4",
+      "id": "hsxqqr4s",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "HalfCheetah-v4",
+      "id": "i1p5160b",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Ant-v4",
+      "id": "ibva3azq",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "CartPole-v1",
+      "id": "igqb1b4d",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "HalfCheetah-v4",
+      "id": "ikhm60oy",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "LunarLander-v3",
+      "id": "im2yplpd",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Humanoid-v4",
+      "id": "im4c5toa",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "LunarLander-v3",
+      "id": "jddf2nj8",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Hopper-v4",
+      "id": "jwc39a32",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Humanoid-v4",
+      "id": "k34vkmcr",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "CartPole-v1",
+      "id": "k567njpp",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Ant-v4",
+      "id": "k74ifgzy",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Hopper-v4",
+      "id": "kdlehj12",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "HalfCheetah-v4",
+      "id": "kze615xj",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "CartPole-v1",
+      "id": "l75uyytl",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Ant-v4",
+      "id": "lcnlffk3",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "LunarLander-v3",
+      "id": "lh5qgsyp",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "CartPole-v1",
+      "id": "luelmx95",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Walker2d-v4",
+      "id": "lvt16z84",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "HalfCheetah-v4",
+      "id": "m6pfqfin",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Humanoid-v4",
+      "id": "mbnisojs",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Walker2d-v4",
+      "id": "mf47p5m5",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "LunarLander-v3",
+      "id": "mo4roqnx",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "HalfCheetah-v4",
+      "id": "n2417yet",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "CartPole-v1",
+      "id": "n3j56y9l",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "CartPole-v1",
+      "id": "nbvpord3",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Ant-v4",
+      "id": "ngcfvssx",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "LunarLander-v3",
+      "id": "nrs8h9ls",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Ant-v4",
+      "id": "oa8d1ydc",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Walker2d-v4",
+      "id": "otndo895",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Ant-v4",
+      "id": "ouvl7x40",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "CartPole-v1",
+      "id": "p0mwd9ui",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "CartPole-v1",
+      "id": "p69iyav1",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "LunarLander-v3",
+      "id": "p7e9tiql",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Walker2d-v4",
+      "id": "p8gctrrd",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Hopper-v4",
+      "id": "p8hw78m4",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "HalfCheetah-v4",
+      "id": "pdwp23ex",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "LunarLander-v3",
+      "id": "pjr2lphl",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Ant-v4",
+      "id": "povgl5lx",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Hopper-v4",
+      "id": "q70r4f3q",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Walker2d-v4",
+      "id": "q7run9ew",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Ant-v4",
+      "id": "qa0lf2se",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Hopper-v4",
+      "id": "qbhk4dyc",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "HalfCheetah-v4",
+      "id": "r6hohwy6",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Ant-v4",
+      "id": "r8rw644j",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "HalfCheetah-v4",
+      "id": "r8txy9ql",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Ant-v4",
+      "id": "rs9zf4hd",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Hopper-v4",
+      "id": "rt05zlvz",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Walker2d-v4",
+      "id": "rz2b76hp",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "CartPole-v1",
+      "id": "s4mb0kbu",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Humanoid-v4",
+      "id": "sb173ig4",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "CartPole-v1",
+      "id": "slbob6av",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Humanoid-v4",
+      "id": "srpxe1hk",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Walker2d-v4",
+      "id": "stgtck7s",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "HalfCheetah-v4",
+      "id": "t42phun3",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "LunarLander-v3",
+      "id": "t9r379ah",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "LunarLander-v3",
+      "id": "tbhfz5sx",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Ant-v4",
+      "id": "tn7v6crf",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "LunarLander-v3",
+      "id": "u56jmp34",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Hopper-v4",
+      "id": "u7u5053w",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Hopper-v4",
+      "id": "uaezo6cf",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "CartPole-v1",
+      "id": "usol1ok3",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Ant-v4",
+      "id": "vgcxmv0m",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "LunarLander-v3",
+      "id": "vlh5a57o",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "CartPole-v1",
+      "id": "vuug2mjz",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Hopper-v4",
+      "id": "w2epsb3h",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "Humanoid-v4",
+      "id": "wlzof3gl",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Walker2d-v4",
+      "id": "wshn6zyc",
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "Humanoid-v4",
+      "id": "x3idvrp4",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "CartPole-v1",
+      "id": "x7c2v2ck",
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "env": "HalfCheetah-v4",
+      "id": "x83b5x69",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "HalfCheetah-v4",
+      "id": "xsvg2vdc",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "CartPole-v1",
+      "id": "y5ykutlb",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_per_sample",
+      "env": "Walker2d-v4",
+      "id": "ywhij09z",
+      "seed": 1
+    },
+    {
+      "algo": "ppo_clip",
+      "env": "HalfCheetah-v4",
+      "id": "z08gmmrj",
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Walker2d-v4",
+      "id": "zedarnza",
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "env": "Humanoid-v4",
+      "id": "zjswlui2",
+      "seed": 1
+    }
+  ],
+  "metrics": {
+    "beta": [
+      "beta/per_sample/all/p01",
+      "beta/per_sample/all/p10",
+      "beta/per_sample/all/p50",
+      "beta/per_sample/all/p90",
+      "beta/per_sample/all/p99"
+    ],
+    "core": [
+      "time/env_step",
+      "train/return/mean",
+      "policy/kl/approx",
+      "policy/clip/fraction",
+      "policy/partition/I_in/fraction",
+      "policy/partition/I_kill/fraction",
+      "policy/partition/I_pass/fraction"
+    ]
+  },
+  "missing": [],
+  "project": "klip-ppo/KLip-PPO",
+  "sweeps": [
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "06djf5dk",
+      "kl_target": 0.003,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "0752qmgc",
+      "kl_target": 0.1,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "CartPole-v1",
+      "id": "0c49morp",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "0gie5cwa",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "0h0ddsya",
+      "kl_target": 0.003,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "HalfCheetah-v4",
+      "id": "0ih0q19e",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "0t1i6kph",
+      "kl_target": 0.02,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "1h2xlvpu",
+      "kl_target": 0.01,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "1ry4jzyu",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "1v1uy75y",
+      "kl_target": 0.1,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "1xucwp0f",
+      "kl_target": 0.02,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "HalfCheetah-v4",
+      "id": "1yywdoe1",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "28jyumqc",
+      "kl_target": 0.1,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "2a2orak2",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "2f1r4y9j",
+      "kl_target": 0.1,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "2ne8enom",
+      "kl_target": 0.02,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "2qqqqwp2",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "2r12fjre",
+      "kl_target": 0.03,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "Hopper-v4",
+      "id": "3doo30z3",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "HalfCheetah-v4",
+      "id": "3md6ia0p",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "4bq5n5fy",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "CartPole-v1",
+      "id": "4rdgo7lw",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "4wp2abks",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "5cxxib0m",
+      "kl_target": 0.02,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "5h5tyqkn",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "5m5ve7hu",
+      "kl_target": 0.1,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "Hopper-v4",
+      "id": "5tovbu92",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "5vjbfsdv",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "6cm2ikjs",
+      "kl_target": 0.01,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "6ek9bzx6",
+      "kl_target": 0.01,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "6y5r9rdp",
+      "kl_target": 0.01,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "72zkkood",
+      "kl_target": 0.03,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "CartPole-v1",
+      "id": "7iqgn0y9",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "7qoibv31",
+      "kl_target": 0.03,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "7qq3n4mk",
+      "kl_target": 0.003,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "8atkde2o",
+      "kl_target": 0.02,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "8d8naknu",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "935o48ym",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "CartPole-v1",
+      "id": "946noojc",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "98xbqszd",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "9gix40x3",
+      "kl_target": 0.02,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "9jd1mgot",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "9lrl8611",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "HalfCheetah-v4",
+      "id": "9zhhtejz",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "9znkoi8y",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "a20nciwr",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "ab9megix",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "abpnyp5o",
+      "kl_target": 0.1,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "HalfCheetah-v4",
+      "id": "adijh48y",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "HalfCheetah-v4",
+      "id": "al0yrgtx",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "aslhv0w2",
+      "kl_target": 0.003,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "awi0w9e2",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "bkuzhmcv",
+      "kl_target": 0.03,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "blm62nl1",
+      "kl_target": 0.01,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "bzxdkbse",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "c3c4pu7a",
+      "kl_target": 0.01,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "cdqvasev",
+      "kl_target": 0.03,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "cdzx3tno",
+      "kl_target": 0.01,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "cq0xq48y",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "cqz8hfed",
+      "kl_target": 0.02,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "crgfwjeb",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "CartPole-v1",
+      "id": "crqae35t",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "d0fjyuhb",
+      "kl_target": 0.03,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "HalfCheetah-v4",
+      "id": "db76ixzc",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "HalfCheetah-v4",
+      "id": "dcp5xquf",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "dfrhxxi4",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "dg7fmnl9",
+      "kl_target": 0.03,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "Hopper-v4",
+      "id": "dq8urcvm",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "drlrc0rx",
+      "kl_target": 0.02,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "drpj7k13",
+      "kl_target": 0.01,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "Hopper-v4",
+      "id": "dtwtpvki",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "dvmglzh5",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "e0gfp30l",
+      "kl_target": 0.02,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "HalfCheetah-v4",
+      "id": "e3j9qn0l",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "e91714nx",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "Hopper-v4",
+      "id": "e9ygr1xj",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "ecrhkho4",
+      "kl_target": 0.03,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "eg16yywz",
+      "kl_target": 0.1,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "ekrya7rw",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "ewb2a10u",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "fnf18qsm",
+      "kl_target": 0.02,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "Hopper-v4",
+      "id": "fnt1i5lu",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "fo3sq29b",
+      "kl_target": 0.01,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "g6lsm42p",
+      "kl_target": 0.1,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "ghw5volr",
+      "kl_target": 0.03,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "go4dbzk5",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "HalfCheetah-v4",
+      "id": "gp7bus9x",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "gwe8aouw",
+      "kl_target": 0.1,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "CartPole-v1",
+      "id": "gxvdjqkw",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "h1p2ax2l",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "hl3qxe64",
+      "kl_target": 0.02,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "hr1mrkwo",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "i18o0g2v",
+      "kl_target": 0.03,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "i48o6d87",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "i4qa16jc",
+      "kl_target": 0.01,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "i6jjecml",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "ibnsrixj",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "ijm2o8na",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "CartPole-v1",
+      "id": "ikjcv7fi",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "imt3c15c",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "j59extsc",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "Hopper-v4",
+      "id": "jh9bzol7",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "CartPole-v1",
+      "id": "jozyw5s3",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "jsvwutxs",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "jz9076yl",
+      "kl_target": 0.1,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "jzkpl9rb",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "jzmv7l9l",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "kcnr3mkd",
+      "kl_target": 0.02,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "khhuu4b7",
+      "kl_target": 0.003,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "kjyjk10m",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "ktncq6oa",
+      "kl_target": 0.1,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "l90qhis3",
+      "kl_target": 0.003,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "CartPole-v1",
+      "id": "l939p1jy",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "le7jmfj1",
+      "kl_target": 0.003,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "lkayvd62",
+      "kl_target": 0.003,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "lr6zdps9",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "m6dv28wi",
+      "kl_target": 0.03,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "Hopper-v4",
+      "id": "mci0851v",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "migj891b",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "mjbj7k7s",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "CartPole-v1",
+      "id": "n1ravwjl",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "n2sv1hy7",
+      "kl_target": 0.1,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "CartPole-v1",
+      "id": "n4zvy8k3",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "n7vrkc05",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "CartPole-v1",
+      "id": "nunzpmnp",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "o58bfcxm",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "obl7cohc",
+      "kl_target": 0.003,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "HalfCheetah-v4",
+      "id": "ocxb934s",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "od2o73pz",
+      "kl_target": 0.01,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "os609hgn",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "p2cfhh44",
+      "kl_target": 0.03,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "HalfCheetah-v4",
+      "id": "p2de2c4c",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "p565f1yy",
+      "kl_target": 0.003,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "p6ng2lfs",
+      "kl_target": 0.1,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "Hopper-v4",
+      "id": "prmznnm0",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "q37b6pu5",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "CartPole-v1",
+      "id": "q530va72",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "q6ct7ujs",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "q97r5x57",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "qbxaeeid",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "qwwmzqim",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "qzvw6x9c",
+      "kl_target": 0.01,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "r3cys6mx",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "rh6qlba7",
+      "kl_target": 0.003,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "rnlohm4f",
+      "kl_target": 0.03,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "Hopper-v4",
+      "id": "rydzgv6w",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "s4igavn2",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "s7url9kb",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "s90ed2jf",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "sa8izfzd",
+      "kl_target": 0.003,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "sfp9p5ih",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "smoxspfh",
+      "kl_target": 0.01,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "sw9wx2ha",
+      "kl_target": 0.1,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "swqt0t4c",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "szemo4zt",
+      "kl_target": 0.01,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "t4jq2bl5",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "tfjbh985",
+      "kl_target": 0.02,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "HalfCheetah-v4",
+      "id": "tj1wzsse",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "tt5disqh",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "twrejtno",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "u8irqtic",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "ub6ty3pf",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "ucfwsamr",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "ugjvublm",
+      "kl_target": 0.02,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "ul04q8fq",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "us358m57",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "uw1ff6bd",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "v2vowr8w",
+      "kl_target": 0.01,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "vfr5fyfu",
+      "kl_target": 0.03,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "vnce8tc1",
+      "kl_target": 0.003,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "CartPole-v1",
+      "id": "vtw3bzk2",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "Hopper-v4",
+      "id": "vw05r8vc",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "w8m4xyka",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 3.0,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "wcjt0udo",
+      "kl_target": null,
+      "seed": 3
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "whhwhfn2",
+      "kl_target": 0.003,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "wi2kxvq7",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "winfmgda",
+      "kl_target": 0.003,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "wmahr5fj",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "CartPole-v1",
+      "id": "wmls3y78",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "Hopper-v4",
+      "id": "wow2qdsr",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 1.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "wz87l3gi",
+      "kl_target": null,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "x6ziewjh",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "xm59vb07",
+      "kl_target": 0.1,
+      "seed": 0
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "HalfCheetah-v4",
+      "id": "xmqbu3fo",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "Hopper-v4",
+      "id": "xmvx411k",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "xnlwtpxo",
+      "kl_target": null,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "y8daqzr6",
+      "kl_target": 0.02,
+      "seed": 4
+    },
+    {
+      "algo": "ppo_kl_adaptive",
+      "beta": null,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "yma0btjr",
+      "kl_target": 0.03,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 10.0,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "ypzb1fna",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.3,
+      "clip_epsilon": null,
+      "env": "CartPole-v1",
+      "id": "ytrclobz",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "HalfCheetah-v4",
+      "id": "yw8kkdu4",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.3,
+      "env": "HalfCheetah-v4",
+      "id": "z1gvl0df",
+      "kl_target": null,
+      "seed": 1
+    },
+    {
+      "algo": "ppo_kl_fixed",
+      "beta": 0.1,
+      "clip_epsilon": null,
+      "env": "Hopper-v4",
+      "id": "zcqyos01",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.2,
+      "env": "Hopper-v4",
+      "id": "zr5q7pr6",
+      "kl_target": null,
+      "seed": 2
+    },
+    {
+      "algo": "ppo_clip",
+      "beta": null,
+      "clip_epsilon": 0.1,
+      "env": "Hopper-v4",
+      "id": "ztoe26ss",
+      "kl_target": null,
+      "seed": 3
+    }
+  ]
+}

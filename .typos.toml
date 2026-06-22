@@ -1,0 +1,15 @@
+[default.extend-words]
+GAE = "GAE"
+MuJoCo = "MuJoCo"
+PPO = "PPO"
+multline = "multline"
+penality = "penality"
+strat = "strat"
+thm = "thm"
+wandb = "wandb"
+
+[default.extend-identifiers]
+klip_ppo = "klip_ppo"
+
+[files]
+extend-exclude = ["*.lock.json", "*.bib"]

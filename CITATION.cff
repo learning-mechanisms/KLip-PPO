@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: >-
+  If you use KLip-PPO, please cite the paper. If you use the code directly, you
+  may also cite this repository metadata.
+title: "KLip-PPO"
+authors:
+  - family-names: "Colletti"
+    given-names: "Riccardo"
+  - family-names: "Holzinger"
+    given-names: "Robin"
+abstract: >-
+  Research code, experiments, and reproducibility artifacts for KLip-PPO: A
+  per-sample KL perspective on PPO-Clip.
+version: "0.0.0"
+license: "Apache-2.0"
+repository-code: "https://github.com/learning-mechanisms/KLip-PPO"
+url: "https://klip-ppo.org/"
+keywords:
+  - "reinforcement learning"
+  - "proximal policy optimization"
+  - "PPO"
+  - "KL divergence"
+preferred-citation:
+  type: unpublished
+  title: "KLip-PPO: A per-sample KL perspective on PPO-Clip"
+  authors:
+    - family-names: "Colletti"
+      given-names: "Riccardo"
+    - family-names: "Holzinger"
+      given-names: "Robin"
+  year: 2026
+  url: "https://klip-ppo.org/KLip-PPO.pdf"

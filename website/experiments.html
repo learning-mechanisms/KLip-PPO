@@ -1,0 +1,377 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KLip-PPO - experiments</title>
+    <meta name="description" content="KLip-PPO experiments: learning curves, final-return table and the kill fraction across five MuJoCo tasks, regenerated from the logged runs." />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/content.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/lightbox.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] }, svg: { fontCache: "global" } };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <h1>Experiments</h1>
+        <div class="sub">Five MuJoCo tasks, with CartPole and LunarLander as checks; five seeds each.</div>
+        <button class="navtoggle" aria-label="open menu" aria-expanded="false">
+          <svg viewBox="0 0 22 22" width="24" height="24" aria-hidden="true"><path d="M3 6 H19 M3 11 H19 M3 16 H19" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="tabs2">
+      <div class="wrap">
+        <div class="navlinks">
+          <a href="index.html">overview</a>
+          <a href="theorems.html">theorems &amp; proofs</a>
+          <a href="experiments.html" class="here">experiments</a>
+          <a class="artifact" href="https://wandb.ai/KLip-PPO/KLip-PPO"
+            ><svg class="artifactmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M8 1.5c-3.03 0-5.5.86-5.5 1.92v9.16c0 1.06 2.47 1.92 5.5 1.92s5.5-.86 5.5-1.92V3.42C13.5 2.36 11.03 1.5 8 1.5Zm0 1c2.54 0 4.36.61 4.49.92-.13.31-1.95.92-4.49.92s-4.36-.61-4.49-.92C3.64 3.11 5.46 2.5 8 2.5Zm4.5 3.2v1.91c-.13.31-1.95.92-4.5.92s-4.36-.61-4.5-.92V5.7c.96.58 2.59.94 4.5.94s3.54-.36 4.5-.94Zm0 3.1v1.91c-.13.31-1.95.92-4.5.92s-4.36-.61-4.5-.92V8.8c.96.58 2.59.94 4.5.94s3.54-.36 4.5-.94Zm0 3.1v.68c-.13.31-1.95.92-4.5.92s-4.36-.61-4.5-.92v-.68c.96.58 2.59.94 4.5.94s3.54-.36 4.5-.94Z"
+              /></svg
+            >artifacts</a
+          >
+          <a class="doc" href="KLip-PPO.pdf"
+            ><svg class="docmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M9 1H3.5A1.5 1.5 0 0 0 2 2.5v11A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V6L9 1zm0 1.5L12.5 6H9V2.5zM4.5 6.5h3v1h-3v-1zm0 2.5h7v1h-7v-1zm0 2.5h7v1h-7v-1z"
+              /></svg
+            >paper</a
+          >
+          <a class="gh" href="https://github.com/learning-mechanisms/KLip-PPO"
+            ><svg class="ghmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+              /></svg
+            >code</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrap">
+      <section class="reveal">
+        <h2 class="h"><span class="cm">//</span> <span class="id">01</span> &nbsp;setup</h2>
+        <p>
+          The four objectives share the trainer, the rollout collector and the value head, and follow the standard PPO configuration of CleanRL and Stable-Baselines3. They differ only in the policy
+          loss.
+        </p>
+        <p class="note">
+          The public <a class="ext" href="https://wandb.ai/KLip-PPO/KLip-PPO">KLip-PPO W&amp;B project</a> contains the run histories, configs, logs, metrics, and checkpoints behind these plots.
+        </p>
+
+        <table class="kv">
+          <thead>
+            <tr>
+              <th>shared configuration</th>
+              <th>value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>actor-critic</td>
+              <td>\(64\)-\(64\) \(\tanh\), orthogonal init</td>
+            </tr>
+            <tr>
+              <td>advantages</td>
+              <td>GAE, \(\gamma=0.99\), \(\lambda=0.95\)</td>
+            </tr>
+            <tr>
+              <td>optimiser</td>
+              <td>Adam, \(3\times10^{-4}\), linear annealing</td>
+            </tr>
+            <tr>
+              <td>rollout</td>
+              <td>\(2048\) steps, \(K=10\) epochs, minibatch \(64\)</td>
+            </tr>
+            <tr>
+              <td>normalisation</td>
+              <td>observations and rewards</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="kv">
+          <thead>
+            <tr>
+              <th>variant</th>
+              <th>trust-region knob</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PPO-Clip</td>
+              <td>\(\epsilon = 0.2\)</td>
+            </tr>
+            <tr>
+              <td>fixed-\(\beta\) PPO-KL</td>
+              <td>\(\beta = 1\)</td>
+            </tr>
+            <tr>
+              <td>adaptive-\(\beta\) PPO-KL</td>
+              <td>target \(D_{\mathrm{KL}} = 0.02\)</td>
+            </tr>
+            <tr>
+              <td>per-sample PPO-KL</td>
+              <td>\(\beta_t=-w\hat A\) on \(\mathcal I_{\mathrm{kill}}\) (<a href="theorems.html">Theorem&nbsp;1</a>)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="reveal">
+        <h2 class="h"><span class="cm">//</span> <span class="id">02</span> &nbsp;learning curves</h2>
+        <p>
+          Theorem&nbsp;1 predicts that PPO-Clip and the per-sample KL surrogate trace the same learning curve. The lines below are the logged returns over training; the scalar-\(\beta\) baselines fall
+          behind on the tasks that move the policy farthest from initialisation.
+        </p>
+
+        <div class="block">
+          <div class="player-top">
+            <div class="tasks" id="tasks"></div>
+            <div class="note" id="stepReadout" aria-live="polite"></div>
+          </div>
+          <svg id="curvePlot" class="fig" viewBox="0 0 760 360" role="img" aria-label="learning curves, return versus environment steps"></svg>
+          <div class="transport">
+            <button id="playBtn" aria-label="play or pause the curve animation">play</button>
+            <input id="scrub" type="range" min="0" max="1" step="0.001" value="0" aria-label="scrub training progress" />
+          </div>
+          <div class="curve-legend" id="curveLegend"></div>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <h2 class="h"><span class="cm">//</span> <span class="id">03</span> &nbsp;final return</h2>
+        <p>
+          PPO-Clip and per-sample KL agree on every task. Fixed and adaptive \(\beta\) match on the easier tasks but fall behind on Ant and Humanoid, where the policy must travel far from its
+          initialisation and the trust region does real work.
+        </p>
+
+        <p>
+          The per-sample identity explains the shortfall. Clipping constrains each sample on its own terms, turning the penalty on only for the transitions whose ratio has left the band and scaling it
+          by that sample's ratio and advantage. A scalar \(\beta\) applies one value to every sample: large enough to restrain the few runaway transitions, it over-penalises the many well-behaved
+          ones, so no single value reproduces what the clip does pointwise.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>task</th>
+              <th>PPO-Clip</th>
+              <th>per-sample</th>
+              <th>fixed&nbsp;\(\beta\)</th>
+              <th>adaptive&nbsp;\(\beta\)</th>
+            </tr>
+          </thead>
+          <tbody id="retBody"></tbody>
+        </table>
+        <p class="note">
+          Mean \(\pm\) std over 5 seeds, last 10% of training. PPO-Clip and per-sample KL coincide exactly: the per-sample coefficient reproduces the clip's gradient at every step, so the two columns
+          are identical.
+        </p>
+      </section>
+
+      <section class="reveal">
+        <h2 class="h"><span class="cm">//</span> <span class="id">04</span> &nbsp;the kill fraction</h2>
+        <p>
+          The penalty \(\beta_t\) is non-zero only on \(\mathcal I_{\mathrm{kill}}\). Its peak reach over training grows with task difficulty, exceeding half the batch on Humanoid, exactly where a
+          scalar \(\beta\) cannot keep up.
+        </p>
+        <div class="block">
+          <div class="cap">peak fraction of the PPO-Clip minibatch in \(\mathcal I_{\mathrm{kill}}\)</div>
+          <div id="killBars"></div>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <h2 class="h"><span class="cm">//</span> <span class="id">05</span> &nbsp;figures from the paper</h2>
+
+        <h3 class="grp">PPO-Clip vs per-sample, task by task</h3>
+        <p class="note">PPO-Clip (left) and per-sample KL (right) on every task; the two panels are indistinguishable.</p>
+        <div class="gallery">
+          <figure>
+            <img src="assets/figures/identity_hopper.svg" alt="Identity on Hopper-v4" />
+            <figcaption>Hopper-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/identity_halfcheetah.svg" alt="Identity on HalfCheetah-v4" />
+            <figcaption>HalfCheetah-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/identity_walker2d.svg" alt="Identity on Walker2d-v4" />
+            <figcaption>Walker2d-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/identity_ant.svg" alt="Identity on Ant-v4" />
+            <figcaption>Ant-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/identity_humanoid.svg" alt="Identity on Humanoid-v4" />
+            <figcaption>Humanoid-v4</figcaption>
+          </figure>
+        </div>
+
+        <h3 class="grp">return, four variants</h3>
+        <p class="note">Episode return on each MuJoCo task. PPO-Clip and per-sample KL coincide; the scalar baselines trail on Ant and Humanoid.</p>
+        <div class="gallery">
+          <figure>
+            <img src="assets/figures/equiv_hopper.svg" alt="Return on Hopper-v4" />
+            <figcaption>Hopper-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/equiv_halfcheetah.svg" alt="Return on HalfCheetah-v4" />
+            <figcaption>HalfCheetah-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/equiv_walker2d.svg" alt="Return on Walker2d-v4" />
+            <figcaption>Walker2d-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/equiv_ant.svg" alt="Return on Ant-v4" />
+            <figcaption>Ant-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/equiv_humanoid.svg" alt="Return on Humanoid-v4" />
+            <figcaption>Humanoid-v4</figcaption>
+          </figure>
+        </div>
+
+        <h3 class="grp">the clipping partition</h3>
+        <p class="note">Fraction of the PPO-Clip batch in \(\mathcal I_{\mathrm{kill}}\) and \(\mathcal I_{\mathrm{pass}}\) over training. The penalty \(\beta_t\) acts only on the kill set.</p>
+        <div class="gallery">
+          <figure>
+            <img src="assets/figures/partition_hopper.svg" alt="Partition on Hopper-v4" />
+            <figcaption>Hopper-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/partition_halfcheetah.svg" alt="Partition on HalfCheetah-v4" />
+            <figcaption>HalfCheetah-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/partition_walker2d.svg" alt="Partition on Walker2d-v4" />
+            <figcaption>Walker2d-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/partition_ant.svg" alt="Partition on Ant-v4" />
+            <figcaption>Ant-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/partition_humanoid.svg" alt="Partition on Humanoid-v4" />
+            <figcaption>Humanoid-v4</figcaption>
+          </figure>
+        </div>
+
+        <h3 class="grp">the per-sample coefficient \(\beta_t\)</h3>
+        <p class="note">\(\beta_t\) over training: zero in median, with negative tails on the kill set that widen on the harder tasks.</p>
+        <div class="gallery">
+          <figure>
+            <img src="assets/figures/beta_hopper.svg" alt="beta on Hopper-v4" />
+            <figcaption>Hopper-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/beta_halfcheetah.svg" alt="beta on HalfCheetah-v4" />
+            <figcaption>HalfCheetah-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/beta_walker2d.svg" alt="beta on Walker2d-v4" />
+            <figcaption>Walker2d-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/beta_ant.svg" alt="beta on Ant-v4" />
+            <figcaption>Ant-v4</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/beta_humanoid.svg" alt="beta on Humanoid-v4" />
+            <figcaption>Humanoid-v4</figcaption>
+          </figure>
+        </div>
+
+        <p class="note" style="margin-top: 18px">All of the above is in <a class="ext" href="KLip-PPO.pdf">the paper</a>.</p>
+      </section>
+
+      <section class="reveal">
+        <h3 class="grp">References</h3>
+        <ol class="refs">
+          <li>Todorov, Erez, Tassa (2012). MuJoCo: A Physics Engine for Model-Based Control. <a class="ext" href="https://doi.org/10.1109/IROS.2012.6386109">IROS 2012</a>.</li>
+          <li>
+            Schulman et al. (2016). High-Dimensional Continuous Control Using Generalized Advantage Estimation. ICLR. <a class="ext" href="https://arxiv.org/abs/1506.02438">arXiv:1506.02438</a>.
+          </li>
+          <li>Raffin et al. (2021). Stable-Baselines3: Reliable Reinforcement Learning Implementations. <a class="ext" href="https://jmlr.org/papers/v22/20-1364.html">JMLR 22(268)</a>.</li>
+          <li>
+            Huang et al. (2022). CleanRL: High-Quality Single-File Implementations of Deep Reinforcement Learning Algorithms.
+            <a class="ext" href="https://jmlr.org/papers/v23/21-1342.html">JMLR 23(274)</a>.
+          </li>
+        </ol>
+      </section>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div class="authors" style="margin-bottom: 16px">
+          <div class="author">
+            <img src="assets/authors/riccardo.png" alt="Riccardo Colletti" width="56" height="56" />
+            <div class="meta">
+              <span class="nm">Riccardo Colletti<sup>*</sup></span
+              ><br />
+              <a href="#" data-contact-email="riccardo" aria-label="Email Riccardo Colletti"
+                ><span>riccardo</span><span>.</span><span>colletti</span> <span>[at]</span> <span>berkeley</span><span>.</span><span>edu</span></a
+              >
+            </div>
+          </div>
+          <div class="author">
+            <img src="assets/authors/robin.png" alt="Robin Holzinger" width="56" height="56" />
+            <div class="meta">
+              <span class="nm">Robin Holzinger<sup>*</sup></span
+              ><br />
+              <a href="#" data-contact-email="robin" aria-label="Email Robin Holzinger"
+                ><span>robin</span><span>.</span><span>holzinger</span> <span>[at]</span> <span>berkeley</span><span>.</span><span>edu</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="eqnote">* equal contribution</div>
+        KLip-PPO &middot; UC Berkeley<br />
+        <a class="doc" href="KLip-PPO.pdf"
+          ><svg class="docmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M9 1H3.5A1.5 1.5 0 0 0 2 2.5v11A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V6L9 1zm0 1.5L12.5 6H9V2.5zM4.5 6.5h3v1h-3v-1zm0 2.5h7v1h-7v-1zm0 2.5h7v1h-7v-1z"
+            /></svg
+          >paper</a
+        >
+        &middot;
+        <a class="gh" href="https://wandb.ai/KLip-PPO/KLip-PPO">wandb.ai</a>
+        &middot;
+        <a class="gh" href="https://github.com/learning-mechanisms/KLip-PPO"
+          ><svg class="ghmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+            /></svg
+          >github.com</a
+        >
+      </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/experiments.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/contact.js" defer></script>
+    <script src="js/nav.js"></script>
+    <script src="js/lightbox.js"></script>
+  </body>
+</html>

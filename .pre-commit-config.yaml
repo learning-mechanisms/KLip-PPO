@@ -1,0 +1,65 @@
+exclude: ^(?:\.pixi|assets|artifacts|website/assets/figures|website/js/data\.js)(/|$)
+
+repos:
+  - repo: local
+    hooks:
+      - id: docformatter
+        name: docformatter
+        entry: docformatter -i
+        language: system
+        types: [python]
+      - id: ruff
+        name: ruff
+        entry: ruff check --fix --exit-non-zero-on-fix --force-exclude
+        language: system
+        types_or: [python, pyi]
+        require_serial: true
+      - id: ruff-format
+        name: ruff-format
+        entry: ruff format --force-exclude
+        language: system
+        types_or: [python, pyi]
+        require_serial: true
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: system
+        types: [python]
+        require_serial: true
+      - id: prettier
+        name: prettier
+        entry: prettier --write --list-different --ignore-unknown
+        language: system
+        types: [text]
+        files: \.(md|yml|yaml)$
+      - id: prettier-html-website
+        name: prettier-html-website
+        entry: prettier --write --list-different
+        language: system
+        files: ^website/.*\.(html|css|js)$
+      - id: taplo
+        name: taplo
+        entry: taplo format
+        language: system
+        types: [toml]
+      - id: trailing-whitespace-fixer
+        name: trailing-whitespace-fixer
+        entry: trailing-whitespace-fixer
+        language: system
+        types: [text]
+      - id: end-of-file-fixer
+        name: end-of-file-fixer
+        entry: end-of-file-fixer
+        language: system
+        types: [text]
+      - id: check-merge-conflict
+        name: check-merge-conflict
+        entry: check-merge-conflict --assume-in-merge
+        language: system
+        types: [text]
+      - id: typos
+        name: typos
+        entry: typos --force-exclude
+        language: system
+        types: [text]
+        require_serial: true

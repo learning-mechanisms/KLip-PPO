@@ -1,0 +1,45 @@
+name: Pixi Updates
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 17 1 * *"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-lock-file:
+    name: Update Pixi Lock File
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@1cce3390c2bfda521930d01229c073c7ff920824
+
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@5185adfbffb4bd703da3010310260805d89ebb11
+        with:
+          run-install: false
+
+      - name: Update lock file
+        shell: bash
+        run: |
+          set -o pipefail
+          pixi update --json | pixi exec pixi-diff-to-markdown > pixi-update.md
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1
+        with:
+          token: ${{ github.token }}
+          commit-message: "build(deps): update pixi lock file"
+          title: "build(deps): Update pixi lock file"
+          body-path: pixi-update.md
+          branch: automation/pixi-update
+          delete-branch: true
+          add-paths: pixi.lock

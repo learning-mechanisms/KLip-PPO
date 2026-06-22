@@ -1,0 +1,292 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KLip-PPO - theorems &amp; proofs</title>
+    <meta name="description" content="KLip-PPO theorems and proofs: the rollout partition, the per-sample gradient identity, and its weight-space dual." />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/content.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/lightbox.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] }, svg: { fontCache: "global" } };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <h1>Theorems &amp; proofs</h1>
+        <div class="sub">The per-sample gradient identity and its weight-space dual.</div>
+        <button class="navtoggle" aria-label="open menu" aria-expanded="false">
+          <svg viewBox="0 0 22 22" width="24" height="24" aria-hidden="true"><path d="M3 6 H19 M3 11 H19 M3 16 H19" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="tabs2">
+      <div class="wrap">
+        <div class="navlinks">
+          <a href="index.html">overview</a>
+          <a href="theorems.html" class="here">theorems &amp; proofs</a>
+          <a href="experiments.html">experiments</a>
+          <a class="artifact" href="https://wandb.ai/KLip-PPO/KLip-PPO"
+            ><svg class="artifactmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M8 1.5c-3.03 0-5.5.86-5.5 1.92v9.16c0 1.06 2.47 1.92 5.5 1.92s5.5-.86 5.5-1.92V3.42C13.5 2.36 11.03 1.5 8 1.5Zm0 1c2.54 0 4.36.61 4.49.92-.13.31-1.95.92-4.49.92s-4.36-.61-4.49-.92C3.64 3.11 5.46 2.5 8 2.5Zm4.5 3.2v1.91c-.13.31-1.95.92-4.5.92s-4.36-.61-4.5-.92V5.7c.96.58 2.59.94 4.5.94s3.54-.36 4.5-.94Zm0 3.1v1.91c-.13.31-1.95.92-4.5.92s-4.36-.61-4.5-.92V8.8c.96.58 2.59.94 4.5.94s3.54-.36 4.5-.94Zm0 3.1v.68c-.13.31-1.95.92-4.5.92s-4.36-.61-4.5-.92v-.68c.96.58 2.59.94 4.5.94s3.54-.36 4.5-.94Z"
+              /></svg
+            >artifacts</a
+          >
+          <a class="doc" href="KLip-PPO.pdf"
+            ><svg class="docmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M9 1H3.5A1.5 1.5 0 0 0 2 2.5v11A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V6L9 1zm0 1.5L12.5 6H9V2.5zM4.5 6.5h3v1h-3v-1zm0 2.5h7v1h-7v-1zm0 2.5h7v1h-7v-1z"
+              /></svg
+            >paper</a
+          >
+          <a class="gh" href="https://github.com/learning-mechanisms/KLip-PPO"
+            ><svg class="ghmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+              /></svg
+            >code</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrap">
+      <p class="lead reveal" style="margin: 20px 0 4px">
+        At each update PPO improves a policy \(\pi_{\theta'}\) over the policy \(\pi_\theta\) that collected the rollout. How far \(\pi_{\theta'}\) has moved on a sampled action \((s_t,a_t)\) is
+        measured by the importance ratio \(w_t=\pi_{\theta'}(a_t\mid s_t)/\pi_\theta(a_t\mid s_t)\), and how good the action was by the advantage \(\hat A_t\) (from GAE).
+      </p>
+
+      <p class="reveal">PPO-Clip and PPO-KL are two ways of keeping \(w_t\) close to one. They read as different algorithms, yet on every sample they descend the same gradient.</p>
+
+      <section class="reveal">
+        <h2 class="h"><span class="cm">//</span> <span class="id">01</span> &nbsp;the surrogate</h2>
+        <p>
+          Writing \(w_t^{(i)}\) and \(\hat A_t^{(i)}\) for the ratio and advantage of sample \((i,t)\), maximising the importance-sampled return \(\mathbb{E}_t[w_t\hat A_t]\) directly is unstable,
+          because \(w_t\) can grow large. PPO-Clip caps it,
+        </p>
+        <div class="block">
+          \[ L_{\mathrm{CLIP}}(\theta') \;=\; \frac1N\sum_{i,t}\, \min\!\Big(\, w_t^{(i)}\hat A_t^{(i)},\;\; \mathrm{clip}\big(w_t^{(i)},\,1-\epsilon,\,1+\epsilon\big)\,\hat A_t^{(i)} \Big), \]
+        </div>
+        <p>so the objective stops rewarding a sample once its ratio leaves the band \([1-\epsilon,\,1+\epsilon]\) in the advantage-improving direction.</p>
+
+        <figure style="margin: 14px 0 4px">
+          <img class="betafig" style="max-width: 560px" src="assets/diagrams/clip_panels.svg" alt="the clipped per-sample loss for positive and negative advantage" />
+          <figcaption class="note" style="text-align: center">
+            The per-sample loss \(\ell(w)=\min(w\hat A,\ \mathrm{clip}(w)\hat A)\). For \(\hat A>0\) the gradient vanishes when \(w>1+\epsilon\); for \(\hat A<0\), when \(w<1-\epsilon\).
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="reveal">
+        <h2 class="h"><span class="cm">//</span> <span class="id">02</span> &nbsp;the partition</h2>
+        <p>Which argument of the inner \(\min\) is active depends only on \((w_t,\hat A_t)\). Fix \(\theta'\); the samples fall into three disjoint sets:</p>
+        <div class="block">
+          \[ \begin{aligned} \mathcal I_{\mathrm{in}} &= \big\{(i,t): w_t^{(i)}\in[1-\epsilon,\,1+\epsilon]\big\}\ \cup\ \big\{(i,t): \hat A_t^{(i)}=0\big\},\\[3pt] \mathcal I_{\mathrm{kill}} &=
+          \big\{w_t^{(i)}>1+\epsilon,\ \hat A_t^{(i)}>0\big\}\ \cup\ \big\{w_t^{(i)}<1-\epsilon,\ \hat A_t^{(i)}<0\big\},\\[3pt] \mathcal I_{\mathrm{pass}} &= \big\{w_t^{(i)}>1+\epsilon,\ \hat
+          A_t^{(i)}<0\big\}\ \cup\ \big\{w_t^{(i)}<1-\epsilon,\ \hat A_t^{(i)}>0\big\}. \end{aligned} \]
+        </div>
+        <p>
+          On \(\mathcal I_{\mathrm{in}}\) the clip is inactive. On \(\mathcal I_{\mathrm{kill}}\) the policy is already moving in the advantage-improving direction and the clip suppresses the update.
+          On \(\mathcal I_{\mathrm{pass}}\) the ratio is outside the band but the move is corrective, so the unclipped term stays active.
+        </p>
+
+        <figure style="margin: 14px 0 4px">
+          <img class="betafig" style="max-width: 400px" src="assets/diagrams/partition_plane.svg" alt="the three regions in the plane of ratio w and advantage A" />
+          <figcaption class="note" style="text-align: center">The three regions in the \((w,\hat A)\) plane: the in-band column, the two kill corners, and the two pass corners.</figcaption>
+        </figure>
+      </section>
+
+      <section class="reveal">
+        <h2 class="h"><span class="cm">//</span> <span class="id">03</span> &nbsp;the two gradients</h2>
+        <p>
+          The gradient of a sum is the sum of gradients, so it is enough to differentiate one sample. The inner \(\min\) is piecewise linear in \(w_t\): on \(\mathcal I_{\mathrm{in}}\cup\mathcal
+          I_{\mathrm{pass}}\) the unclipped term is active and contributes the ordinary policy-gradient; on \(\mathcal I_{\mathrm{kill}}\) the clipped constant is active and contributes nothing.
+        </p>
+        <div class="block">
+          \[ g_t^{(i)}(L_{\mathrm{CLIP}})= \begin{cases} \hat A_t^{(i)}\,\dfrac{\nabla_{\theta'}\pi_{\theta'}(a_t^{(i)}\mid s_t^{(i)})}{\pi_\theta(a_t^{(i)}\mid s_t^{(i)})}, & (i,t)\in\mathcal
+          I_{\mathrm{in}}\cup\mathcal I_{\mathrm{pass}},\\[12pt] 0, & (i,t)\in\mathcal I_{\mathrm{kill}}. \end{cases} \]
+        </div>
+        <p>
+          Now take the PPO-KL surrogate that adds, to each sample, a log-probability penalty with its own coefficient \(\beta_t^{(i)}\), evaluated at the current \(\theta'\) and held fixed
+          (stop-gradient) when differentiating. Differentiating and collecting the score function \(\nabla_{\theta'}\pi_{\theta'}/\pi_\theta\) gives
+        </p>
+        <div class="block">
+          \[ g_t^{(i)}(\mathcal L_{\mathrm{KL}})= \frac{\nabla_{\theta'}\pi_{\theta'}(a_t^{(i)}\mid s_t^{(i)})}{\pi_\theta(a_t^{(i)}\mid s_t^{(i)})} \;\Big[\,\hat
+          A_t^{(i)}+\frac{\beta_t^{(i)}}{w_t^{(i)}}\,\Big]. \]
+        </div>
+        <p>
+          The two contributions match exactly when the bracket equals \(\hat A_t^{(i)}\) on \(\mathcal I_{\mathrm{in}}\cup\mathcal I_{\mathrm{pass}}\) and \(0\) on \(\mathcal I_{\mathrm{kill}}\). One
+          choice of \(\beta_t^{(i)}\) does both.
+        </p>
+      </section>
+
+      <section class="reveal">
+        <h2 class="h"><span class="cm">//</span> <span class="id">04</span> &nbsp;the identity</h2>
+        <div class="thm">
+          <div class="head">Theorem 1 &middot; per-sample gradient identity</div>
+          <div class="body">
+            <p style="margin-top: 0">
+              Let \(\mathcal L_{\mathrm{KL}}\) be the PPO-KL surrogate whose per-sample coefficient \(\beta_t^{(i)}\) is a stop-gradient (detached) coefficient, evaluated at the current \(\theta'\)
+              and held fixed under differentiation, with
+            </p>
+            \[ \beta_t^{(i)} = \begin{cases} 0, & (i,t)\in\mathcal I_{\mathrm{in}}\cup\mathcal I_{\mathrm{pass}},\\[2pt] -\,w_t^{(i)}\hat A_t^{(i)}, & (i,t)\in\mathcal I_{\mathrm{kill}}. \end{cases}
+            \]
+            <p>
+              Then \(\;\nabla_{\theta'}L_{\mathrm{CLIP}}=\nabla_{\theta'}\mathcal L_{\mathrm{KL}}\;\) at every \(\theta'\) where \(L_{\mathrm{CLIP}}\) is differentiable, that is, wherever no sample
+              sits exactly on a clip boundary \(w_t^{(i)}=1\pm\epsilon\) (a measure-zero set where the clip has a kink).
+            </p>
+
+            <div class="proof">
+              <p style="margin-top: 0">
+                Fix a sample \((i,t)\). The PPO-Clip and PPO-KL contributions differ only through the bracket \(\hat A_t^{(i)}+\beta_t^{(i)}/w_t^{(i)}\), and \(\beta_t^{(i)}\) sets it to one of two
+                values.
+              </p>
+              <p>
+                <span class="caseh">Case \(\mathcal I_{\mathrm{in}}\cup\mathcal I_{\mathrm{pass}}\).</span> Here \(\beta_t^{(i)}=0\), so the bracket is \(\hat A_t^{(i)}\) and \(g_t^{(i)}(\mathcal
+                L_{\mathrm{KL}})=\hat A_t^{(i)}\,\nabla_{\theta'}\pi_{\theta'}/\pi_\theta =g_t^{(i)}(L_{\mathrm{CLIP}})\).
+              </p>
+              <p>
+                <span class="caseh">Case \(\mathcal I_{\mathrm{kill}}\).</span> Here \(\beta_t^{(i)}=-w_t^{(i)}\hat A_t^{(i)}\), so the bracket is \(\hat A_t^{(i)}-w_t^{(i)}\hat
+                A_t^{(i)}/w_t^{(i)}=0\) (using \(w_t^{(i)}>0\)), hence \(g_t^{(i)}(\mathcal L_{\mathrm{KL}})=0=g_t^{(i)}(L_{\mathrm{CLIP}})\).
+              </p>
+              <p>The per-sample contributions agree on every \((i,t)\); summing gives the result. <span class="qed">\(\blacksquare\)</span></p>
+            </div>
+          </div>
+        </div>
+        <p>
+          The sign of \(\beta_t^{(i)}\) matches the trust-region intuition. When \(\hat A_t>0\) and \(w_t>1+\epsilon\), the policy already over-weights a good action, and a negative \(\beta_t\) pulls
+          \(\log\pi_{\theta'}\) back. When \(\hat A_t<0\) and \(w_t<1-\epsilon\), it already under-weights a harmful one, and a positive \(\beta_t\) holds it. In both cases the effective advantage is
+          driven to zero, reproducing the clip. The identity is exact at every \(\theta'\) off the clip boundary, strengthening the first-order, near-\(\theta_{\mathrm{old}}\) observation of Schulman
+          et al. (<a class="ext" href="https://arxiv.org/abs/1707.06347">2017</a>).
+        </p>
+      </section>
+
+      <section class="reveal">
+        <h2 class="h"><span class="cm">//</span> <span class="id">05</span> &nbsp;weight-space dual</h2>
+        <p>The same constraint can be written without ever leaving importance-weight space. Here the penalty acts on how far \(w_t\) overshoots the band, rather than on \(\log\pi_{\theta'}\).</p>
+        <div class="thm">
+          <div class="head">Theorem 2 &middot; weight-space form</div>
+          <div class="body">
+            <p style="margin-top: 0">PPO-Clip equals \(\;\frac1N\sum_{i,t}\big[w_t^{(i)}\hat A_t^{(i)}-\Phi(w_t^{(i)},\hat A_t^{(i)})\big]\;\) with</p>
+            \[ \Phi(w,\hat A)=\begin{cases} \big(w-(1+\epsilon)\big)\,\hat A, & w>1+\epsilon,\ \hat A>0,\\[3pt] \big(w-(1-\epsilon)\big)\,\hat A, & w<1-\epsilon,\ \hat A<0,\\[3pt] 0, &
+            \text{otherwise.} \end{cases} \]
+            <div class="proof">
+              <p style="margin-top: 0">
+                For \(w>1+\epsilon,\ \hat A>0\) the clipped product is \((1+\epsilon)\hat A=w\hat A-(w-(1+\epsilon))\hat A=w\hat A-\Phi\); the case \(w<1-\epsilon,\ \hat A<0\) is symmetric; otherwise
+                the unclipped term is the minimum and \(\Phi=0\). Summing over samples gives the form. <span class="qed">\(\blacksquare\)</span>
+              </p>
+            </div>
+            <p class="note" style="margin-bottom: 0">
+              \(\Phi\ge 0\) on \(\mathcal I_{\mathrm{kill}}\): PPO-Clip subtracts a penalty proportional to how far \(w\) exceeds the band, on exactly the kill samples.
+            </p>
+          </div>
+        </div>
+
+        <p>Together, PPO-Clip has three forms that share one per-sample gradient and differ only in the space the penalty lives in:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>form</th>
+              <th>per-sample loss</th>
+              <th>penalty acts in</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>min</td>
+              <td>\(\min(w_t\hat A_t,\ \mathrm{clip}(w_t)\hat A_t)\)</td>
+              <td>hidden in the min</td>
+            </tr>
+            <tr>
+              <td>\(\Phi\)</td>
+              <td>\(w_t\hat A_t-\Phi(w_t,\hat A_t)\)</td>
+              <td>importance-weight space</td>
+            </tr>
+            <tr>
+              <td>\(\beta_t\)</td>
+              <td>\(w_t\hat A_t+\beta_t\log\pi_{\theta'}(a_t\mid s_t)\)</td>
+              <td>distribution space</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">The full statements, the PPO-KL gradient derivation and every proof are in the paper. <a class="ext" href="KLip-PPO.pdf">paper</a>.</p>
+      </section>
+
+      <section class="reveal">
+        <h3 class="grp">References</h3>
+        <ol class="refs">
+          <li>Schulman et al. (2017). Proximal Policy Optimization Algorithms. <a class="ext" href="https://arxiv.org/abs/1707.06347">arXiv:1707.06347</a>.</li>
+          <li>
+            Schulman et al. (2016). High-Dimensional Continuous Control Using Generalized Advantage Estimation. ICLR. <a class="ext" href="https://arxiv.org/abs/1506.02438">arXiv:1506.02438</a>.
+          </li>
+        </ol>
+      </section>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div class="authors" style="margin-bottom: 16px">
+          <div class="author">
+            <img src="assets/authors/riccardo.png" alt="Riccardo Colletti" width="56" height="56" />
+            <div class="meta">
+              <span class="nm">Riccardo Colletti<sup>*</sup></span
+              ><br />
+              <a href="#" data-contact-email="riccardo" aria-label="Email Riccardo Colletti"
+                ><span>riccardo</span><span>.</span><span>colletti</span> <span>[at]</span> <span>berkeley</span><span>.</span><span>edu</span></a
+              >
+            </div>
+          </div>
+          <div class="author">
+            <img src="assets/authors/robin.png" alt="Robin Holzinger" width="56" height="56" />
+            <div class="meta">
+              <span class="nm">Robin Holzinger<sup>*</sup></span
+              ><br />
+              <a href="#" data-contact-email="robin" aria-label="Email Robin Holzinger"
+                ><span>robin</span><span>.</span><span>holzinger</span> <span>[at]</span> <span>berkeley</span><span>.</span><span>edu</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="eqnote">* equal contribution</div>
+        KLip-PPO &middot; UC Berkeley<br />
+        <a class="doc" href="KLip-PPO.pdf"
+          ><svg class="docmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M9 1H3.5A1.5 1.5 0 0 0 2 2.5v11A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V6L9 1zm0 1.5L12.5 6H9V2.5zM4.5 6.5h3v1h-3v-1zm0 2.5h7v1h-7v-1zm0 2.5h7v1h-7v-1z"
+            /></svg
+          >paper</a
+        >
+        &middot;
+        <a class="gh" href="https://wandb.ai/KLip-PPO/KLip-PPO">wandb.ai</a>
+        &middot;
+        <a class="gh" href="https://github.com/learning-mechanisms/KLip-PPO"
+          ><svg class="ghmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+            /></svg
+          >github.com</a
+        >
+      </div>
+    </footer>
+
+    <script src="js/reveal.js"></script>
+    <script src="js/contact.js" defer></script>
+    <script src="js/nav.js"></script>
+    <script src="js/lightbox.js"></script>
+  </body>
+</html>

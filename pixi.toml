@@ -1,0 +1,148 @@
+[workspace]
+name = "klip-ppo"
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64", "osx-64"]
+
+[tasks]
+postinstall = "pip install --no-build-isolation --no-deps --disable-pip-version-check -v -e ."
+
+# Dev loop
+fmt = "ruff format ."
+lint = "ruff check ."
+typecheck = "mypy klip_ppo tests"
+test-fast = "pytest tests/unit -q"
+
+# Experiment loop (thin aliases over the Typer CLI)
+train = "klip train"
+eval = "klip eval"
+sweep = "klip sweep"
+snapshot = "klip snapshot"
+materialize = "klip materialize all"
+experiment-plans = "klip experiment-plans generate"
+soft-clipping-plans = "klip experiment-plans generate-soft-clipping"
+plot = "klip plot"
+report = "klip report"
+artifacts = "klip artifacts"
+
+# Reproducible figures and artifact bundle
+figures = "python -m analysis.render"
+site = "python -m analysis.render.site"
+render-all = { depends-on = ["site", "figures"] }
+export-data = "python -m analysis.export"
+artifact = "python -m submission stage"
+artifact-validate = "python -m submission validate"
+artifact-size = "python -m submission size"
+artifact-zip = "python -m submission zip"
+artifact-unpack = "python -m submission unpack"
+
+# Modal
+modal-login = "sh -c 'if [ -f .env ]; then set -a; . ./.env; set +a; fi; : \"${MODAL_TOKEN_ID:?Set MODAL_TOKEN_ID in .env or environment}\"; : \"${MODAL_TOKEN_SECRET:?Set MODAL_TOKEN_SECRET in .env or environment}\"; modal token set --token-id \"$MODAL_TOKEN_ID\" --token-secret \"$MODAL_TOKEN_SECRET\" \"$@\"' --"
+modal-wandb-secret = "sh -c 'if [ -f .env ]; then set -a; . ./.env; set +a; fi; python -m klip_ppo.runtime.modal_secrets \"$@\"' --"
+modal-deploy = "sh -c 'if [ -f .env ]; then set -a; . ./.env; set +a; fi; modal deploy klip_ppo/runtime/modal_runtime.py \"$@\"' --"
+modal-train = "sh -c 'if [ -f .env ]; then set -a; . ./.env; set +a; fi; klip train --runtime modal \"$@\"' --"
+modal-sweep = "sh -c 'if [ -f .env ]; then set -a; . ./.env; set +a; fi; klip sweep --runtime modal \"$@\"' --"
+modal-pull = "sh -c 'if [ -f .env ]; then set -a; . ./.env; set +a; fi; klip artifacts pull-modal \"$@\"' --"
+
+[dependencies]
+python = ">=3.12,<3.13"
+pip = "*"
+
+[feature.py_utilities.dependencies]
+typer = "*"
+colorama = "*"
+tqdm = "*"
+rich = "*"
+wandb = "*"
+tensorboard = "*"
+python-dotenv = "*"
+pyyaml = "*"
+structlog = "*"
+pydantic = ">=2"
+
+[feature.py_data_processing.dependencies]
+pyarrow = "*"
+pandas = "*"
+polars = "*"
+numpy = "*"
+
+[feature.py_rl.dependencies]
+gymnasium = "*"
+mujoco = "*"
+box2d-py = "*"
+stable-baselines3 = "*"
+pygame = "*"
+imageio = "*"
+moviepy = "*"
+
+[feature.py_ml.dependencies]
+pytorch = ">=2.1.0"
+torchvision = ">=0.16.0"
+scikit-learn = "*"
+scipy = "*"
+
+[feature.py_gpu.system-requirements]
+cuda = "12"
+
+[feature.py_gpu.target.linux-64.dependencies]
+pytorch-gpu = ">=2.2"
+
+[feature.py_plotting.dependencies]
+matplotlib = "*"
+seaborn = "*"
+plotly = "*"
+
+[feature.py_dev.dependencies]
+ipython = "*"
+ipykernel = "*"
+nbconvert = "*"
+
+[feature.py_test.dependencies]
+mypy = ">=1.13"
+pytest = ">=6"
+pytest-benchmark = "*"
+pytest-cov = "*"
+
+[feature.py_modal.pypi-dependencies]
+modal = "*"
+
+[feature.py_test.tasks]
+test = "pytest tests/"
+
+[feature.py_lint.dependencies]
+docformatter = "*"
+pre-commit = "*"
+pre-commit-hooks = "*"
+prettier = "*"
+ruff = "*"
+taplo = "*"
+typos = "*"
+
+[feature.py_lint.tasks]
+pre-commit-install = "pre-commit install"
+pre-commit-run = "pre-commit run -a"
+
+[environments]
+default = { features = [
+  "py_utilities",
+  "py_data_processing",
+  "py_rl",
+  "py_ml",
+  "py_plotting",
+  "py_dev",
+  "py_test",
+  "py_lint",
+  "py_modal",
+] }
+gpu = { features = [
+  "py_utilities",
+  "py_data_processing",
+  "py_rl",
+  "py_ml",
+  "py_plotting",
+  "py_dev",
+  "py_test",
+  "py_lint",
+  "py_gpu",
+  "py_modal",
+] }
+lint = { features = ["py_lint"] }

@@ -1,0 +1,70 @@
+# Local notes
+notes/
+
+# Training runs and experiment outputs
+runs/
+checkpoints/
+wandb/
+artifacts/**
+!artifacts/README.md
+data/
+results/
+plots/
+videos/
+
+# Paper: LaTeX build artifacts and compiled PDF (figures are tracked)
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.out
+paper/*.toc
+paper/*.lof
+paper/*.lot
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/*.run.xml
+paper/*.bcf
+paper/*.pdf
+!paper/KLip-PPO.pdf
+
+# OS/editor
+.DS_Store
+*.swp
+.vscode/*
+!.vscode/settings.json
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.hypothesis/
+.coverage*
+htmlcov/
+
+# Virtual/env tooling
+.env
+.venv/
+venv/
+.pixi/
+
+# Build artifacts
+.build/
+build/
+dist/
+*.egg-info/
+
+# Logs and local agent state
+*.log
+.worktrees/
+*.ignore.*
+*.ignore
+uv.lock
+
+# Reference PDFs of cited papers (large, third-party, not build inputs)
+paper/references/
