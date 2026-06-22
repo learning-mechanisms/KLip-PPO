@@ -1,0 +1,377 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KLip-PPO - a per-sample KL perspective on PPO-Clip</title>
+    <meta
+      name="description"
+      content="PPO-Clip's gradient is exactly a per-sample Kullback-Leibler penalty. Theory, experiments, and public W&amp;B reproducibility artifacts by Riccardo Colletti and Robin Holzinger."
+    />
+    <meta property="og:title" content="KLip-PPO - a per-sample KL perspective on PPO-Clip" />
+    <meta property="og:description" content="The clipped PPO surrogate is, exactly, a per-sample KL penalty. Theory, proofs, and experiments." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/content.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/lightbox.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] }, svg: { fontCache: "global" } };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <h1>
+          <span class="brand">KLip-PPO</span><span class="tagline">A <span class="hl">per-sample KL perspective</span> on PPO-Clip</span>
+        </h1>
+        <div class="byline">
+          <div class="author-top">
+            <img src="assets/authors/riccardo.png" alt="Riccardo Colletti" width="40" height="40" />
+            <span class="who"
+              ><b>Riccardo Colletti<sup>*</sup></b
+              ><span class="aff">UC Berkeley</span></span
+            >
+          </div>
+          <div class="author-top">
+            <img src="assets/authors/robin.png" alt="Robin Holzinger" width="40" height="40" />
+            <span class="who"
+              ><b>Robin Holzinger<sup>*</sup></b
+              ><span class="aff">UC Berkeley</span></span
+            >
+          </div>
+        </div>
+        <div class="eqnote">* equal contribution</div>
+        <button class="navtoggle" aria-label="open menu" aria-expanded="false">
+          <svg viewBox="0 0 22 22" width="24" height="24" aria-hidden="true"><path d="M3 6 H19 M3 11 H19 M3 16 H19" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="tabs2">
+      <div class="wrap">
+        <div class="navlinks">
+          <a href="index.html" class="here">overview</a>
+          <a href="theorems.html">theorems &amp; proofs</a>
+          <a href="experiments.html">experiments</a>
+          <a href="https://wandb.ai/KLip-PPO/KLip-PPO">artifacts</a>
+          <a class="doc" href="KLip-PPO.pdf"
+            ><svg class="docmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M9 1H3.5A1.5 1.5 0 0 0 2 2.5v11A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V6L9 1zm0 1.5L12.5 6H9V2.5zM4.5 6.5h3v1h-3v-1zm0 2.5h7v1h-7v-1zm0 2.5h7v1h-7v-1z"
+              /></svg
+            >paper</a
+          >
+          <a class="gh" href="https://github.com/learning-mechanisms/KLip-PPO"
+            ><svg class="ghmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+              /></svg
+            >code</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrap">
+      <div class="hero reveal">
+        <div class="hero-inner">
+          <div class="eyebrow">KLip-PPO</div>
+          <h2 class="hero-title">PPO-Clip is a KL penalty whose coefficient <span>varies per sample</span>.</h2>
+          <p class="hero-sub">
+            The clipped surrogate and a KL penalty are treated as separate algorithms. We show the clipped gradient is reproduced exactly by a KL penalty whose coefficient varies per sample, so the
+            two produce indistinguishable training curves:
+          </p>
+
+          <div class="block herobox">
+            <div class="player-top">
+              <div class="tasks"><span class="taskpill">CartPole-v1</span></div>
+              <div class="note" id="heroStep">real logged returns</div>
+            </div>
+            <svg class="herofig" id="heroCurve" viewBox="0 0 380 196" role="img" aria-label="CartPole-v1 logged returns: PPO-Clip and per-sample KL grow identically"></svg>
+            <div class="transport">
+              <button id="heroPlay" aria-label="play or pause the CartPole animation">play</button>
+              <input id="heroScrub" type="range" min="0" max="1" step="0.001" value="0" aria-label="scrub training progress" />
+            </div>
+          </div>
+
+          <div class="cta">
+            <a class="btn solid" href="#identity">the idea</a>
+            <a class="btn" href="theorems.html">theorems</a>
+            <a class="btn" href="experiments.html">experiments</a>
+            <a class="btn" href="https://wandb.ai/KLip-PPO/KLip-PPO">public artifacts</a>
+            <a class="btn doc" href="KLip-PPO.pdf"
+              ><svg class="docmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M9 1H3.5A1.5 1.5 0 0 0 2 2.5v11A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V6L9 1zm0 1.5L12.5 6H9V2.5zM4.5 6.5h3v1h-3v-1zm0 2.5h7v1h-7v-1zm0 2.5h7v1h-7v-1z"
+                /></svg
+              >paper</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <div class="wrap">
+        <p class="lead reveal" style="margin: 20px 0 6px">
+          Proximal Policy Optimization (<a class="ext" href="https://arxiv.org/abs/1707.06347">Schulman et al., 2017</a>) is the default algorithm for on-policy reinforcement learning. Each update
+          maximises an importance-weighted return while keeping the new policy \(\pi_{\theta'}\) close to the policy \(\pi_\theta\) that collected the data. Each sampled action carries an importance
+          ratio \(w_t=\pi_{\theta'}(a_t\mid s_t)/\pi_\theta(a_t\mid s_t)\), measuring how much the policy changed on it, and an advantage \(\hat A_t\) estimating how much better the action was than
+          expected. PPO keeps \(w_t\) close to one in one of two ways.
+        </p>
+        <p class="note reveal">
+          Public run histories, configs, logs, metrics, and checkpoints are available as reproducibility artifacts in the
+          <a class="ext" href="https://wandb.ai/KLip-PPO/KLip-PPO">KLip-PPO W&amp;B project</a>.
+        </p>
+
+        <section class="reveal">
+          <h2 class="h"><span class="cm">//</span> <span class="id">01</span> &nbsp;the clip and the KL penalty</h2>
+          <p><b>PPO-Clip</b> caps the ratio: once \(w_t\) leaves the band \([1-\epsilon,\,1+\epsilon]\) in the advantage-improving direction, the objective stops rewarding that sample.</p>
+
+          <p><b>PPO-KL</b> instead subtracts a penalty proportional to the Kullback&ndash;Leibler divergence between the two policies, paying for every unit of drift.</p>
+
+          <div class="twofig">
+            <figure>
+              <img src="assets/diagrams/fig_clip.svg" alt="the clipped surrogate rises then flattens once the ratio leaves the band" />
+              <figcaption class="note">
+                <span class="cap-full">PPO-Clip: the surrogate rises with the ratio \(w_t\), then flattens once \(w_t\) leaves the band, so past the edge the gradient is clipped.</span
+                ><span class="cap-mini">PPO-Clip: past the band edge, the gradient is clipped.</span>
+              </figcaption>
+            </figure>
+            <figure>
+              <img src="assets/diagrams/fig_kl.svg" alt="two policy distributions separated by a Kullback-Leibler divergence" />
+              <figcaption class="note">
+                <span class="cap-full">PPO-KL: the penalty grows with the divergence \(D_{\mathrm{KL}}(\pi_\theta\,\|\,\pi_{\theta'})\), pulling \(\pi_{\theta'}\) back toward \(\pi_\theta\).</span
+                ><span class="cap-mini">PPO-KL: the penalty grows with \(D_{\mathrm{KL}}(\pi_\theta\,\|\,\pi_{\theta'})\).</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <p>
+            Since 2017 these have been read as separate algorithms, with their own gradients and hyperparameters, and a large literature compares them task by task. As training loops they look
+            unrelated:
+          </p>
+        </section>
+
+        <div class="algos reveal">
+          <div class="algo-tabs" role="tablist" aria-label="choose an algorithm">
+            <button class="algo-tab on" data-algo="clip" role="tab" aria-selected="true">PPO-Clip</button>
+            <button class="algo-tab" data-algo="kl" role="tab" aria-selected="false">PPO-KL</button>
+          </div>
+          <figure class="algo-fig" data-algo="clip">
+            <img src="assets/diagrams/flow_clip.svg" alt="PPO-Clip training loop" loading="lazy" />
+          </figure>
+          <figure class="algo-fig" data-algo="kl" hidden>
+            <img src="assets/diagrams/flow_kl.svg" alt="PPO-KL training loop" loading="lazy" />
+          </figure>
+        </div>
+
+        <p class="reveal" style="margin: 6px 0 0">They are not alternatives. <b>The clip is itself a KL penalty, applied one sample at a time.</b></p>
+
+        <section class="reveal" id="identity">
+          <h2 class="h"><span class="cm">//</span> <span class="id">02</span> &nbsp;the per-sample identity</h2>
+          <p>Fix one update. Whether the clip changes a sample's gradient depends only on its ratio \(w_t\) and advantage \(\hat A_t\), which split the batch into three disjoint sets:</p>
+          <ul>
+            <li><b>in-band</b> (\(\mathcal I_{\mathrm{in}}\), \(w_t\in[1-\epsilon,1+\epsilon]\)): the clip is inactive; the gradient is the ordinary policy gradient.</li>
+            <li>
+              <b>kill</b> (\(\mathcal I_{\mathrm{kill}}\)): \(w_t\) is outside the band in the advantage-improving direction, so the clip <em>zeroes the gradient</em> and the sample stops
+              contributing.
+            </li>
+            <li><b>pass</b> (\(\mathcal I_{\mathrm{pass}}\)): \(w_t\) is outside the band but the move is corrective, so the unclipped term stays active.</li>
+          </ul>
+          <p>
+            So the clip's <em>only</em> effect is to zero the gradient on the kill set. A per-sample KL penalty with coefficient \(\beta_t=-w_t\hat A_t\) on the kill set (and \(0\) elsewhere) zeroes
+            exactly those gradients and leaves the rest untouched; added to the unpenalised surrogate it reproduces the PPO-Clip gradient sample for sample:
+          </p>
+
+          <div class="block">
+            <div class="cap"><span class="tag">Theorem 1 &middot; per-sample gradient identity</span></div>
+            \[ \nabla_{\theta'} L_{\mathrm{CLIP}} \;=\; \nabla_{\theta'}\,\mathbb{E}_t\!\big[\, w_t\hat A_t \;+\; \beta_t \,\log \pi_{\theta'}(a_t\mid s_t) \,\big], \qquad \beta_t = -\,w_t\hat A_t
+            \,\mathbb{1}\!\left[t\in\mathcal I_{\mathrm{kill}}\right]. \]
+          </div>
+
+          <figure style="margin: 16px 0 6px">
+            <img class="betafig" style="max-width: 430px" src="assets/diagrams/beta_landscape.svg" alt="the coefficient beta over the plane of ratio w and advantage A" />
+            <figcaption class="note" style="text-align: center">
+              Where the clip acts. The coefficient \(\beta_t=-w\hat A\) lives on the two kill corners (red); in the band and the pass corners \(\beta_t=0\).
+            </figcaption>
+          </figure>
+
+          <p class="small dim">
+            The match is exact and global: it holds at every parameter setting \(\theta'\) and across the whole inner loop, while the original PPO paper argued only a first-order agreement near
+            \(\theta_{\mathrm{old}}\). <a href="theorems.html">Statement and proof &rarr;</a>
+          </p>
+        </section>
+
+        <section class="reveal">
+          <h2 class="h"><span class="cm">//</span> <span class="id">03</span> &nbsp;learning curves</h2>
+          <p>
+            Because they share a gradient, the clip and the per-sample KL surrogate train the same way. The two panels below show the logged returns for PPO-Clip and per-sample KL (mean over five
+            seeds, on a shared scale); the curves stay together on every task.
+          </p>
+
+          <div class="block">
+            <div class="player-top">
+              <div class="tasks" id="tasks"></div>
+              <div class="note" id="stepReadout" aria-live="polite"></div>
+            </div>
+            <svg id="curvePlot" class="fig" viewBox="0 0 760 360" data-mode="split" role="img" aria-label="PPO-Clip and per-sample KL return curves, side by side"></svg>
+            <div class="transport">
+              <button id="playBtn" aria-label="play or pause the curve animation">play</button>
+              <input id="scrub" type="range" min="0" max="1" step="0.001" value="0" aria-label="scrub training progress" />
+            </div>
+            <div class="curve-legend" id="curveLegend"></div>
+          </div>
+          <p class="small dim">The scalar baselines and the full four-way comparison are on the <a href="experiments.html">experiments page</a>.</p>
+        </section>
+
+        <section class="reveal">
+          <h2 class="h"><span class="cm">//</span> <span class="id">04</span> &nbsp;the same gradient, three forms</h2>
+          <p>
+            The identity lets PPO-Clip be written three ways that compute the same gradient but place the penalty in different spaces. All three share the reward term
+            <span class="forms"><span class="keep">\(w_t\hat A_t\)</span></span> and differ only in how they express the penalty: hidden in a \(\min\), on the importance weight, or on the policy.
+          </p>
+
+          <div class="forms" id="forms">
+            <div class="row open">
+              <button><span>min &middot; the original clip</span> <span class="arr">&rsaquo;</span></button>
+              <div class="panel">
+                <div class="inner">
+                  \[ L_{\mathrm{CLIP}} = \mathbb{E}_t\big[\min(\,w_t\hat A_t,\ \mathrm{clip}(w_t,1-\epsilon,1+\epsilon)\,\hat A_t\,)\big] \]
+                  <p class="note">Schulman et al., 2017. The \(\min\) hides the penalty; only its effect is visible.</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <button><span>&Phi; &middot; a penalty on the weight</span> <span class="arr">&rsaquo;</span></button>
+              <div class="panel">
+                <div class="inner">
+                  \[ L_{\mathrm{CLIP}} = \mathbb{E}_t\big[\,w_t\hat A_t - \Phi(w_t,\hat A_t)\,\big] \]
+                  <p class="note">A dual form (Appendix A): the penalty \(\Phi\) subtracts how far \(w_t\) overshoots the band, on the kill samples.</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <button>
+                <span>&beta;<sub>t</sub> &middot; a penalty on the policy</span> <span class="arr">&rsaquo;</span>
+              </button>
+              <div class="panel">
+                <div class="inner">
+                  \[ L_{\mathrm{CLIP}} = \mathbb{E}_t\big[\,w_t\hat A_t + \beta_t\,\log\pi_{\theta'}(a_t\mid s_t)\,\big],\quad \beta_t=-w_t\hat A_t\,\mathbb{1}[\mathcal I_{\mathrm{kill}}] \]
+                  <p class="note">The per-sample KL form. PPO-Clip fixes \(\beta_t\) to a step on the boundary; the per-sample view makes that step an explicit choice.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h2 class="h"><span class="cm">//</span> <span class="id">05</span> &nbsp;consequences</h2>
+          <p>
+            The identity removes the opposition between the two surrogates. PPO-Clip <em>is</em> a KL penalty, with the per-sample coefficient \(\beta_t\); so whatever edge clipping has shown over
+            PPO-KL is an edge over a single <em>scalar</em> coefficient, which our experiments confirm on the high-dimensional tasks.
+          </p>
+
+          <p>
+            That reframes the open question as the <em>shape</em> of \(\beta_t\). The clip fixes it to a hard step on the trust-region boundary; soft relaxations and asymmetric or position-aware
+            coefficients are other choices within the same surrogate family, now reachable as design knobs rather than separate algorithms.
+          </p>
+          <div class="nextlinks">
+            <a class="navcard" href="experiments.html">
+              <span class="nl-t">Experiments <span class="nl-arr">&rarr;</span></span>
+              <span class="nl-d">curves, the final-return table and the kill fraction</span>
+            </a>
+            <a class="navcard" href="theorems.html">
+              <span class="nl-t">Theorems &amp; proofs <span class="nl-arr">&rarr;</span></span>
+              <span class="nl-d">the partition, the two gradients, and the identity, proved</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h3 class="grp">References</h3>
+          <ol class="refs">
+            <li>Schulman et al. (2017). Proximal Policy Optimization Algorithms. <a class="ext" href="https://arxiv.org/abs/1707.06347">arXiv:1707.06347</a>.</li>
+            <li>Schulman et al. (2015). Trust Region Policy Optimization. ICML. <a class="ext" href="https://arxiv.org/abs/1502.05477">arXiv:1502.05477</a>.</li>
+            <li>
+              Engstrom et al. (2020). Implementation Matters in Deep Policy Gradients: A Case Study on PPO and TRPO. ICLR. <a class="ext" href="https://arxiv.org/abs/2005.12729">arXiv:2005.12729</a>.
+            </li>
+            <li>Ilyas et al. (2020). A Closer Look at Deep Policy Gradients. ICLR. <a class="ext" href="https://arxiv.org/abs/1811.02553">arXiv:1811.02553</a>.</li>
+            <li>
+              Andrychowicz et al. (2021). What Matters in On-Policy Reinforcement Learning? A Large-Scale Empirical Study. ICLR.
+              <a class="ext" href="https://arxiv.org/abs/2006.05990">arXiv:2006.05990</a>.
+            </li>
+            <li>Hsu et al. (2020). Revisiting Design Choices in Proximal Policy Optimization. <a class="ext" href="https://arxiv.org/abs/2009.10897">arXiv:2009.10897</a>.</li>
+            <li>Sun et al. (2022). You May Not Need Ratio Clipping in PPO. <a class="ext" href="https://arxiv.org/abs/2202.00079">arXiv:2202.00079</a>.</li>
+          </ol>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div class="authors" style="margin-bottom: 16px">
+          <div class="author">
+            <img src="assets/authors/riccardo.png" alt="Riccardo Colletti" width="56" height="56" />
+            <div class="meta">
+              <span class="nm">Riccardo Colletti<sup>*</sup></span
+              ><br />
+              <a href="#" data-contact-email="riccardo" aria-label="Email Riccardo Colletti"
+                ><span>riccardo</span><span>.</span><span>colletti</span> <span>[at]</span> <span>berkeley</span><span>.</span><span>edu</span></a
+              >
+            </div>
+          </div>
+          <div class="author">
+            <img src="assets/authors/robin.png" alt="Robin Holzinger" width="56" height="56" />
+            <div class="meta">
+              <span class="nm">Robin Holzinger<sup>*</sup></span
+              ><br />
+              <a href="#" data-contact-email="robin" aria-label="Email Robin Holzinger"
+                ><span>robin</span><span>.</span><span>holzinger</span> <span>[at]</span> <span>berkeley</span><span>.</span><span>edu</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="eqnote">* equal contribution</div>
+        KLip-PPO &middot; UC Berkeley<br />
+        <a class="doc" href="KLip-PPO.pdf"
+          ><svg class="docmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M9 1H3.5A1.5 1.5 0 0 0 2 2.5v11A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V6L9 1zm0 1.5L12.5 6H9V2.5zM4.5 6.5h3v1h-3v-1zm0 2.5h7v1h-7v-1zm0 2.5h7v1h-7v-1z"
+            /></svg
+          >paper</a
+        >
+        &middot;
+        <a class="gh" href="https://wandb.ai/KLip-PPO/KLip-PPO">wandb.ai</a>
+        &middot;
+        <a class="gh" href="https://github.com/learning-mechanisms/KLip-PPO"
+          ><svg class="ghmark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+            /></svg
+          >github.com</a
+        >
+      </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/herocurve.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/contact.js" defer></script>
+    <script src="js/nav.js"></script>
+    <script src="js/lightbox.js"></script>
+  </body>
+</html>
