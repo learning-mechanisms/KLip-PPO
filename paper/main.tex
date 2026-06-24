@@ -382,6 +382,7 @@ contribution on each index set.
 \centering
 \small
 \renewcommand{\arraystretch}{1.6}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{@{} >{\centering\arraybackslash}p{2.4cm} p{4.8cm} >{\centering\arraybackslash}p{3.8cm} p{3.2cm} @{}}
 \toprule
 \textbf{Index set} & \textbf{Condition} & \textbf{Active term in $\min$} & \textbf{Gradient} \\
@@ -392,7 +393,8 @@ $\mathcal{I}_{\mathrm{kill}}$ & $w_t^{(i)} > 1\!+\!\epsilon$, $\hat{A}_t^{(i)}\!
 \midrule
 $\mathcal{I}_{\mathrm{pass}}$ & $w_t^{(i)} > 1\!+\!\epsilon$, $\hat{A}_t^{(i)}\!<\!0$\newline \textit{or}\newline $w_t^{(i)} < 1\!-\!\epsilon$, $\hat{A}_t^{(i)}\!>\!0$ & unclipped term $w_t^{(i)}\hat{A}_t^{(i)}$ & $\hat{A}_t^{(i)}\,\nabla_{\theta'} w_t^{(i)}$ \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \caption{Per-sample contribution of the PPO-Clip objective on the three index sets. The gradient is killed only on $\mathcal{I}_{\mathrm{kill}}$, where further policy change would push the importance ratio further outside the trust region.}
 \label{tab:index-sets}
 \end{table}
