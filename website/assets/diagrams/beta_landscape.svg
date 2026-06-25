@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 286" role="img"
+     aria-label="the coefficient beta over the plane of ratio w and advantage A">
+  <rect x="159" y="26" width="112" height="214" fill="#2f43c4" opacity="0.06"/>
+  <rect x="271" y="26"  width="113" height="107" fill="#c0392b" opacity="0.14"/>
+  <rect x="46"  y="133" width="113" height="107" fill="#c0392b" opacity="0.14"/>
+  <rect x="46"  y="26"  width="113" height="107" fill="#2f43c4" opacity="0.10"/>
+  <rect x="271" y="133" width="113" height="107" fill="#2f43c4" opacity="0.10"/>
+  <line x1="159" y1="26" x2="159" y2="240" stroke="#16181d" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <line x1="271" y1="26" x2="271" y2="240" stroke="#16181d" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <line x1="46" y1="133" x2="384" y2="133" stroke="#8a909a" stroke-width="1.2" stroke-dasharray="2 3"/>
+  <text x="41" y="137" text-anchor="end" font-family="monospace" font-size="10" fill="#5b626e">0</text>
+  <line x1="215" y1="26" x2="215" y2="240" stroke="#cdd2da" stroke-width="1"/>
+  <rect x="46" y="26" width="338" height="214" fill="none" stroke="#16181d" stroke-width="1.5"/>
+  <text x="327" y="72"  text-anchor="middle" font-family="monospace" font-size="12" fill="#c0392b" font-weight="700">I_kill</text>
+  <text x="327" y="88"  text-anchor="middle" font-family="monospace" font-size="11" fill="#c0392b">&#946; = &#8722;w&#194;</text>
+  <text x="102" y="178" text-anchor="middle" font-family="monospace" font-size="12" fill="#c0392b" font-weight="700">I_kill</text>
+  <text x="102" y="194" text-anchor="middle" font-family="monospace" font-size="11" fill="#c0392b">&#946; = &#8722;w&#194;</text>
+  <text x="215" y="104" text-anchor="middle" font-family="monospace" font-size="11" fill="#2f43c4" font-weight="700">I_in</text>
+  <text x="215" y="118" text-anchor="middle" font-family="monospace" font-size="10" fill="#5b626e">&#946; = 0</text>
+  <text x="102" y="72"  text-anchor="middle" font-family="monospace" font-size="11" fill="#5b626e">I_pass</text>
+  <text x="102" y="87"  text-anchor="middle" font-family="monospace" font-size="10" fill="#5b626e">&#946; = 0</text>
+  <text x="327" y="196" text-anchor="middle" font-family="monospace" font-size="11" fill="#5b626e">I_pass</text>
+  <text x="327" y="211" text-anchor="middle" font-family="monospace" font-size="10" fill="#5b626e">&#946; = 0</text>
+  <text x="159" y="256" text-anchor="middle" font-family="monospace" font-size="10" fill="#5b626e">1&#8722;&#949;</text>
+  <text x="215" y="256" text-anchor="middle" font-family="monospace" font-size="10" fill="#5b626e">1</text>
+  <text x="271" y="256" text-anchor="middle" font-family="monospace" font-size="10" fill="#5b626e">1+&#949;</text>
+  <text x="215" y="278" text-anchor="middle" font-family="monospace" font-size="11" fill="#16181d">importance ratio &#160;w&#160; &#8594;</text>
+  <text x="16" y="133" text-anchor="middle" font-family="monospace" font-size="11" fill="#16181d" transform="rotate(-90 16 133)">advantage &#160;&#194;</text>
+  <text x="58" y="38" font-family="monospace" font-size="10" fill="#9aa0a8">+</text>
+  <text x="58" y="232" font-family="monospace" font-size="10" fill="#9aa0a8">&#8722;</text>
+</svg>

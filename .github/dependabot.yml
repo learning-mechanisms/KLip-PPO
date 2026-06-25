@@ -1,0 +1,39 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      time: "09:00"
+      timezone: America/Los_Angeles
+    groups:
+      github-actions:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      github-actions-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+    commit-message:
+      prefix: ci
+      include: scope
+
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: monthly
+      time: "09:00"
+      timezone: America/Los_Angeles
+    groups:
+      python-dependencies:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      python-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+    commit-message:
+      prefix: build
+      include: scope

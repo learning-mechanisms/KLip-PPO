@@ -1,0 +1,97 @@
+{
+  "config": {
+    "algorithm": {
+      "advantage_normalization": "rollout",
+      "clip_epsilon": 0.2,
+      "clip_value_loss": true,
+      "ent_coef": 0.0,
+      "epochs": 10,
+      "gae_lambda": 0.95,
+      "gamma": 0.99,
+      "kind": "ppo_kl_per_sample",
+      "max_grad_norm": 0.5,
+      "minibatch_size": 64,
+      "optimiser": {
+        "anneal_lr": true,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "eps": 1e-05,
+        "lr": 0.0003,
+        "weight_decay": 0.0
+      },
+      "target_kl_stop": null,
+      "value_clip_epsilon": 0.2,
+      "vf_coef": 0.5
+    },
+    "env": {
+      "clip_obs": 10.0,
+      "clip_reward": 10.0,
+      "id": "Hopper-v4",
+      "max_episode_steps": null,
+      "normalize_obs": true,
+      "normalize_reward": true,
+      "reward_scale": 1.0
+    },
+    "logging": {
+      "parquet": true,
+      "parquet_flush_every_iters": 10,
+      "stdout": true,
+      "tensorboard": false,
+      "wandb": null
+    },
+    "name": "hopper__ppo_kl_per_sample",
+    "network": {
+      "activation": "tanh",
+      "hidden_sizes": [
+        64,
+        64
+      ],
+      "log_std_init": 0.0,
+      "ortho_init": true,
+      "share_backbone": false
+    },
+    "notes": "",
+    "rollout": {
+      "async_envs": false,
+      "n_steps": 2048,
+      "num_envs": 1
+    },
+    "runtime": {
+      "backend": "local",
+      "cudnn_benchmark": true,
+      "deterministic": false,
+      "device": "auto",
+      "mixed_precision": "off",
+      "modal_gpu": "L4",
+      "modal_timeout_seconds": 86400,
+      "num_threads": null
+    },
+    "seed": 0,
+    "tags": [
+      "ppo",
+      "kl_per_sample",
+      "mujoco",
+      "hopper"
+    ],
+    "trainer": {
+      "checkpoint_every_steps": null,
+      "diagnostic_mode": "standard",
+      "eval_deterministic": true,
+      "eval_episodes": 10,
+      "eval_every_steps": 50000,
+      "log_every_iters": 1,
+      "save_final_checkpoint": true,
+      "total_steps": 1000000
+    }
+  },
+  "group": "mujoco-baselines",
+  "kind": "experiment_snapshot/v1",
+  "name": "hopper__ppo_kl_per_sample",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ]
+}

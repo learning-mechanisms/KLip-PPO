@@ -1,0 +1,43 @@
+# Equivalence-test fixture.
+# Used by tests/integration/test_equivalence.py to verify Theorem 3.1
+# (PPO-Clip and PPO-KL per-sample β produce identical gradients on a
+# frozen minibatch).
+name: equivalence__cartpole
+seed: 0
+
+algorithm:
+  kind: ppo_clip
+  clip_epsilon: 0.2
+  epochs: 1
+  minibatch_size: 32
+  gamma: 0.99
+  gae_lambda: 0.95
+  vf_coef: 0.5
+  ent_coef: 0.0
+  max_grad_norm: 100.0
+  advantage_normalization: none
+  clip_value_loss: false
+  optimiser:
+    lr: 3.0e-4
+
+env:
+  id: CartPole-v1
+
+network:
+  hidden_sizes: [16, 16]
+  activation: tanh
+  ortho_init: true
+
+rollout:
+  num_envs: 2
+  n_steps: 32
+  async_envs: false
+
+trainer:
+  total_steps: 1024
+
+logging:
+  stdout: false
+  parquet: false
+
+tags: [equivalence, cartpole]

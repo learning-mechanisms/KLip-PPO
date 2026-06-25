@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 196" role="img" aria-label="the clipped per-sample loss for positive and negative advantage">
+
+        <rect x="109" y="22" width="92" height="146" fill="#2f43c4" opacity="0.06"/>
+        <rect x="201" y="22" width="69" height="146" fill="#c0392b" opacity="0.09"/>
+        <line x1="40" y1="168" x2="270" y2="168" stroke="#16181d" stroke-width="1.3"/>
+        <line x1="40" y1="22"  x2="40"  y2="168" stroke="#16181d" stroke-width="1.3"/>
+        <line x1="109" y1="22" x2="109" y2="168" stroke="#16181d" stroke-width="1" stroke-dasharray="4 4"/>
+        <line x1="201" y1="22" x2="201" y2="168" stroke="#16181d" stroke-width="1" stroke-dasharray="4 4"/>
+        <path d="M40 153 L201 45 L270 45" fill="none" stroke="#2f43c4" stroke-width="2.4" stroke-linejoin="round"/>
+        <circle cx="201" cy="45" r="3" fill="#2f43c4"/>
+        <text x="155" y="15"  text-anchor="middle" font-family="monospace" font-size="11" fill="#16181d">&#194; &gt; 0</text>
+        <text x="235" y="40"  text-anchor="middle" font-family="monospace" font-size="9.5" fill="#c0392b">frozen</text>
+        <text x="109" y="182" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#5b626e">1&#8722;&#949;</text>
+        <text x="155" y="182" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#5b626e">1</text>
+        <text x="201" y="182" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#5b626e">1+&#949;</text>
+        <text x="266" y="182" text-anchor="end"    font-family="monospace" font-size="9.5" fill="#5b626e">w</text>
+
+        <rect x="379" y="22" width="92" height="146" fill="#2f43c4" opacity="0.06"/>
+        <rect x="310" y="22" width="69" height="146" fill="#c0392b" opacity="0.09"/>
+        <line x1="310" y1="168" x2="540" y2="168" stroke="#16181d" stroke-width="1.3"/>
+        <line x1="310" y1="22"  x2="310" y2="168" stroke="#16181d" stroke-width="1.3"/>
+        <line x1="379" y1="22" x2="379" y2="168" stroke="#16181d" stroke-width="1" stroke-dasharray="4 4"/>
+        <line x1="471" y1="22" x2="471" y2="168" stroke="#16181d" stroke-width="1" stroke-dasharray="4 4"/>
+        <path d="M310 38 L379 38 L540 152" fill="none" stroke="#2f43c4" stroke-width="2.4" stroke-linejoin="round"/>
+        <circle cx="379" cy="38" r="3" fill="#2f43c4"/>
+        <text x="425" y="15"  text-anchor="middle" font-family="monospace" font-size="11" fill="#16181d">&#194; &lt; 0</text>
+        <text x="344" y="33"  text-anchor="middle" font-family="monospace" font-size="9.5" fill="#c0392b">frozen</text>
+        <text x="379" y="182" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#5b626e">1&#8722;&#949;</text>
+        <text x="425" y="182" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#5b626e">1</text>
+        <text x="471" y="182" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#5b626e">1+&#949;</text>
+        <text x="536" y="182" text-anchor="end"    font-family="monospace" font-size="9.5" fill="#5b626e">w</text>
+      </svg>

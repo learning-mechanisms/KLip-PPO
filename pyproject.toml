@@ -1,0 +1,94 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "klip-ppo"
+version = "0.0.0"
+readme = "README.md"
+license = "Apache-2.0"
+authors = []
+keywords = []
+classifiers = []
+requires-python = ">=3.12, <3.13"
+dependencies = []
+
+[project.scripts]
+klip = "klip_ppo.cli.main:main"
+
+[project.urls]
+homepage = "https://klip-ppo.org/"
+repository = "https://github.com/learning-mechanisms/KLip-PPO"
+
+[tool.setuptools.packages.find]
+include = ["klip_ppo*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+klip_ppo = ["py.typed"]
+
+[tool.ruff]
+line-length = 88
+src = ["klip_ppo", "tests"]
+
+[tool.ruff.lint]
+ignore = ["E501", "N803", "N806", "E722"]
+select = ["F", "E", "W", "I", "N", "UP"]
+
+[tool.ruff.format]
+indent-style = "space"
+quote-style = "double"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["ANN", "ARG", "D", "E402", "PTH", "S101"]
+
+[tool.docformatter]
+pre-summary-newline = true
+black = true
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_untyped_defs = false
+explicit_package_bases = true
+no_implicit_optional = true
+plugins = []
+python_version = "3.12"
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = [
+  "gymnasium.*",
+  "imageio.*",
+  "modal.*",
+  "moviepy.*",
+  "mujoco.*",
+  "pandas",
+  "pandas.*",
+  "pygame.*",
+  "scipy",
+  "scipy.*",
+  "stable_baselines3.*",
+  "torchvision.*",
+  "wandb.*",
+  "yaml",
+]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = ["-p no:warnings", "--import-mode=importlib"]
+xfail_strict = true
+log_cli_level = "warn"
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["klip_ppo"]
+
+[tool.coverage.report]
+exclude_also = [
+  "if TYPE_CHECKING:",
+  "if __name__ == .__main__.:",
+  "except ImportError",
+]
