@@ -13,9 +13,8 @@ header .wrap {
   all: unset;
   display: none;
   position: absolute;
-  top: 50%;
+  top: 0;
   right: 0;
-  transform: translateY(-50%);
   cursor: pointer;
   color: var(--ink);
   padding: 8px;
